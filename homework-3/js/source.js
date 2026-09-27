@@ -99,9 +99,82 @@ $(function () {
     // Do not modify the JS objects above. You will write your code below.
     // *********************************************************************
 
-
+    $("#username").text(username);
+    $(".revenue-amt").text(revenueAmt); //appears in both the top and the overview section
+    $("#customer-num").text(customerNum);
+    $("#orders-amt").text(ordersAmt);
+    $("#issues-amt").text(issuesAmt);
+    $("#notification-num").text(notifAmt);
 
        
+
+    //loops through every object in the sales array and creats a new table row for each one
+    sales.forEach(function (sale) 
+    {
+    $("#salesTableBody").append(
+        "<tr>" +
+            "<td>" + sale.product + "</td>" +
+            "<td>" + sale.quantity + "</td>" +
+            "<td>" + sale.revenue + "</td>" +
+        "</tr>"
+    );
+});
+
+    activities.forEach(function (activity)
+     {
+    $("#activity-list").append( "<li>" + activity.message + "</li>");
+});
+
+    customers.forEach(function (customer) 
+    {
+
+    let statusClass = "";
+
+    if (customer.status === "Active") 
+        {
+        statusClass = "status-active";
+        }
+        else    
+        {
+        statusClass = "status-pending";
+        }
+
+    $("#customerTableBody").append(
+        "<tr>" +
+            "<td>" + customer.name + "</td>" +
+            "<td>" + customer.email + "</td>" +
+            "<td><span class='status " + statusClass + "'>" + customer.status + "</span></td>" +
+            "<td>" + customer.joined + "</td>" +
+        "</tr>"
+    );
+});
+
+    messages.forEach(function (message) 
+    {
+    $("#system-status-list").append(
+        "<li>" + message.messsage + "</li>"
+    );
+});
+
+    notifications.forEach(function (notification) 
+    {
+    $("#notifications-list").append(
+        "<li>" + notification.messsage + "</li>"
+    );
+});
+
+    tasks.forEach(function (task)
+    {
+    $("#tasks-list").append(
+        "<li>" + task.messsage + "</li>"
+    );
+});
+
+
+
+
+
+
 
 
     });
